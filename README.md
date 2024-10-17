@@ -11,39 +11,41 @@ left to right direction
 entity "Reservation" {
   [PK] reservation_id : Long NOT NULL
   --
-  + reservation_from : Date NOT NULL CHECK(time(reservation_from) >= time(8:00))
-  + reservation_to : Date NOT NULL CHECK(time(reservation_to) <= time(20:00))
-  - user_id : Long NOT NULL <<FK1>>
-  - space_id : Long NOT NULL <<FK1>>
+  + reservation_start : Date NOT NULL CHECK(time(reservation_start) >= time(8:00))
+  + reservation_end : Date NOT NULL CHECK(time(reservation_end) <= time(20:00))
+  - customer_id : Long NOT NULL <<FK1>>
+  - place_id : Long NOT NULL <<FK1>>
   --
-  CONSTRAINT CHECK(time(reservation_to) - time(reservation_from) = 30)
+  CONSTRAINT CHECK(time(reservation_end) - time(reservation_start) = 30)
 }
 
-entity "Space_Type" {
-  [PK] space_type_id : Long NOT NULL
+entity "Place_Type" {
+  [PK] place_type_id : Long NOT NULL
   --
   + title : String NOT NULL
   + description : String NOT NULL
 }
 
-entity "Space" {
-  [PK] space_id : Long NOT NULL
+entity "Place" {
+  [PK] place_id : Long NOT NULL
   --
   + location : String NOT NULL
-  - space_type_id : Long NOT NULL <<FK1>>
+  - place_type_id : Long NOT NULL <<FK1>>
 }
 
-entity "User" {
-  [PK] user_id : Long NOT NULL
+entity "Customer" {
+  [PK] customer_id : Long NOT NULL
   --
+  + first_name : String
+  + last_name : String
   + email : String NOT NULL
   + password : String NOT NULL
   + username : String
 }
 
-Space_Type::space_type_id ||--|{ Space::space_type_id
-User::user_id ||--|| Reservation::user_id
-Space::space_id ||--|| Reservation::space_id
+Place_Type::place_type_id ||--|{ Place::place_type_id
+Customer::customer_id ||--|| Reservation::customer_id
+Place::place_id ||--|| Reservation::place_id
 @enduml
 ```
 
