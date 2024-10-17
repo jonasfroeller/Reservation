@@ -1,5 +1,58 @@
 # reservation
 
+## ERD
+
+[View Online](https://www.plantuml.com/plantuml/umla/ZPD1Qy9048Nl-oi6JmO9fEsb11MBRMbHOj5uAgKioMWNacpOZ2rY-j-x6snMOnDwdVVbpPiNTb8GLxHB4vRWXe0aAB7z88Y5meY4p1Z3Z0JjeRV40jKdDyCU71Z0wyli3PITleiOV9ZBR0l18eHWFPzhodKPmE2CsoYPQlAU4zOaJ9yUfhC-YHJxJTQ1yGWgvTRtFCUvC2JvNpkI3WoFPjVUhviBEutyaH-6myVPrNXSCKNE8-o6gcEdYs0LBk-UWx0hXGijjuxWndFOjor-LUqDzpdQtezXI0yxQzSE2MfvHKgS0mE8iOYKoCtgIw8PeBcxUsqY8zxqjKndU5ldIO9rWSe6QFjRTZ-cN2GjP-UyABwaYbjauvtnr9PcSjXVuFlduSlITSi36A2fCPFQzurXJPPmyengZPr-tiBM8fjW5kiN-mC0)
+
+```plantuml
+@startuml
+left to right direction
+
+entity "Reservation" {
+  [PK] reservation_id : Long NOT NULL
+  --
+  + reservation_from : Date NOT NULL CHECK(time(reservation_from) >= time(8:00))
+  + reservation_to : Date NOT NULL CHECK(time(reservation_to) <= time(20:00))
+  - user_id : Long NOT NULL <<FK1>>
+  - space_id : Long NOT NULL <<FK1>>
+  --
+  CONSTRAINT CHECK(time(reservation_to) - time(reservation_from) = 30)
+}
+
+entity "Space_Type" {
+  [PK] space_type_id : Long NOT NULL
+  --
+  + title : String NOT NULL
+  + description : String NOT NULL
+}
+
+entity "Space" {
+  [PK] space_id : Long NOT NULL
+  --
+  + location : String NOT NULL
+  - space_type_id : Long NOT NULL <<FK1>>
+}
+
+entity "User" {
+  [PK] user_id : Long NOT NULL
+  --
+  + email : String NOT NULL
+  + password : String NOT NULL
+  + username : String
+}
+
+Space_Type::space_type_id ||--|{ Space::space_type_id
+User::user_id ||--|| Reservation::user_id
+Space::space_id ||--|| Reservation::space_id
+@enduml
+```
+
+**Format**:
+* https://plantuml.com/class-diagram
+    * https://plantuml.com/ie-diagram
+
+## Info
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
