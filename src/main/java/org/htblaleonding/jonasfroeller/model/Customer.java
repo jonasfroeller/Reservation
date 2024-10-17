@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.htblaleonding.jonasfroeller.utility.PasswordUtils;
 import org.htblaleonding.jonasfroeller.validator.Password;
@@ -15,10 +14,10 @@ public class Customer {
     @Id
     private Long id;
 
-    @NotBlank
+    @Size(min = 1)
     @Column(name = "first_name")
     private String firstName;
-    @NotBlank
+    @Size(min = 1)
     @Column(name = "last_name")
     private String lastName;
     @Email
@@ -40,7 +39,7 @@ public class Customer {
         return firstName;
     }
 
-    public void setFirstName(@NotBlank String firstName) {
+    public void setFirstName(@Size(min = 1) String firstName) {
         this.firstName = firstName;
     }
 
@@ -48,7 +47,7 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(@NotBlank String lastName) {
+    public void setLastName(@Size(min = 1) String lastName) {
         this.lastName = lastName;
     }
 

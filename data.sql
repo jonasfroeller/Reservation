@@ -33,18 +33,18 @@ create table Reservation (
 
 alter table if exists Place
     add constraint FK_Place_PlaceType
-    foreign key (placeType_id)
-    references PlaceType;
+        foreign key (placeType_id)
+            references PlaceType;
 
 alter table if exists Reservation
     add constraint FK_Reservation_Customer
-    foreign key (customer_id)
-    references Customer;
+        foreign key (customer_id)
+            references Customer;
 
 alter table if exists Reservation
     add constraint FK_Reservation_Place
-    foreign key (place_id)
-    references Place;
+        foreign key (place_id)
+            references Place;
 
 INSERT INTO PlaceType (id, title, description) VALUES (1, 'Hotel Room', 'Standard hotel accommodation');
 INSERT INTO PlaceType (id, title, description) VALUES (2, 'Apartment', 'Fully furnished apartment for short-term stay');
