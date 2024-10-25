@@ -1,8 +1,8 @@
 package org.htblaleonding.jonasfroeller.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Future;
 import org.htblaleonding.jonasfroeller.validator.TimeDifference;
@@ -13,11 +13,7 @@ import java.sql.Date;
 @Entity
 @TimeDifference
 @TimeRange
-public class Reservation {
-
-    @Id
-    private Long id;
-
+public class Reservation extends PanacheEntity {
     @ManyToOne
     private Customer customer;
     @ManyToOne
@@ -29,14 +25,6 @@ public class Reservation {
     @Future
     @Column(name = "reservation_end")
     private Date reservationEnd;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Customer getCustomer() {
         return customer;

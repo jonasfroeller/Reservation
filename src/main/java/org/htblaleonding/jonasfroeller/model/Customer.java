@@ -1,19 +1,15 @@
 package org.htblaleonding.jonasfroeller.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import org.htblaleonding.jonasfroeller.utility.PasswordUtils;
 import org.htblaleonding.jonasfroeller.validator.Password;
 
 @Entity
-public class Customer {
-
-    @Id
-    private Long id;
-
+public class Customer extends PanacheEntity {
     @Size(min = 1)
     @Column(name = "first_name")
     private String firstName;
@@ -26,14 +22,6 @@ public class Customer {
     private String password;
     @Size(min = 3, max = 100)
     private String username;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
