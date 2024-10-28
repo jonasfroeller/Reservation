@@ -1,5 +1,3 @@
-## A basic GitHub Actions workflow for your Quarkus application.
-
 name: CI build
 
 on:
@@ -19,5 +17,7 @@ jobs:
           java-version: 21
           distribution: temurin
           cache: maven
+      - name: Make mvnw executable
+        run: chmod +x ./reservation-backend/mvnw
       - name: Build
         run: ./reservation-backend/mvnw verify -B
