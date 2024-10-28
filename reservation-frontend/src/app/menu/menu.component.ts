@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import {CustomerComponent} from "../customer/customer.component";
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {routes} from '../app.routes';
 
 @Component({
   selector: 'app-menu',
@@ -37,4 +38,6 @@ export class MenuComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  protected readonly routes = routes;
 }

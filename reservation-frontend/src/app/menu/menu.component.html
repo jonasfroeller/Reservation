@@ -4,15 +4,18 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a
-        mat-list-item
-        routerLinkActive
-        [routerLinkActiveOptions]="{exact: true}"
-        routerLink="/"
-        #rla="routerLinkActive"
-        [activated]="rla.isActive"
-      >Home</a>
+    <mat-nav-list style="margin-left: 0.25rem; margin-right: 0.25rem;">
+      @for (route of routes; track $index) {
+        <a
+          mat-list-item
+          routerLinkActive
+          [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="route.path"
+          #rla="routerLinkActive"
+          [activated]="rla.isActive"
+          style="margin-top: 0.25rem; margin-bottom: 0.25rem;"
+        >{{ route.title }}</a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
