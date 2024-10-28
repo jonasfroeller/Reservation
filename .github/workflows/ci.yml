@@ -20,4 +20,5 @@ jobs:
       - name: Make mvnw executable
         run: chmod +x ./reservation-backend/mvnw
       - name: Build
-        run: ./reservation-backend/mvnw verify -B
+        run: ./mvnw verify -B
+        working-directory: ./reservation-backend
