@@ -1,5 +1,6 @@
 package org.htblaleonding.jonasfroeller.boundary;
 
+import io.quarkus.panache.common.Sort;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -34,7 +35,7 @@ public class CustomerResource {
     @GET
     @Path("")
     public List<Customer> getCustomerList() {
-        return customerRepository.findAll().list();
+        return customerRepository.listAll(Sort.by("email"));
     }
 
     @GET

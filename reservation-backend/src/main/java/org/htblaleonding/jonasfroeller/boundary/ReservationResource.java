@@ -1,5 +1,6 @@
 package org.htblaleonding.jonasfroeller.boundary;
 
+import io.quarkus.panache.common.Sort;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -33,7 +34,7 @@ public class ReservationResource {
     @GET
     @Path("")
     public List<Reservation> getReservationList() {
-        return reservationRepository.findAll().list();
+        return reservationRepository.listAll(Sort.by("reservationStart"));
     }
 
     @GET

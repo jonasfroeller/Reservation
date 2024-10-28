@@ -1,5 +1,6 @@
 package org.htblaleonding.jonasfroeller.boundary;
 
+import io.quarkus.panache.common.Sort;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -33,7 +34,7 @@ public class PlaceTypeResource {
     @GET
     @Path("")
     public List<PlaceType> getPlaceTypeList() {
-        return placeTypeRepository.findAll().list();
+        return placeTypeRepository.listAll(Sort.by("title"));
     }
 
     @GET
