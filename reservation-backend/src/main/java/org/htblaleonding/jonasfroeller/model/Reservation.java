@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Future;
 import org.htblaleonding.jonasfroeller.validator.TimeDifference;
 import org.htblaleonding.jonasfroeller.validator.TimeRange;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @TimeDifference
@@ -21,10 +21,10 @@ public class Reservation extends PanacheEntity {
 
     @Future
     @Column(name = "reservation_start")
-    private Date reservationStart;
+    private LocalDateTime reservationStart;
     @Future
     @Column(name = "reservation_end")
-    private Date reservationEnd;
+    private LocalDateTime reservationEnd;
 
     public Customer getCustomer() {
         return customer;
@@ -42,19 +42,19 @@ public class Reservation extends PanacheEntity {
         this.place = place;
     }
 
-    public @Future Date getReservationStart() {
+    public @Future LocalDateTime getReservationStart() {
         return reservationStart;
     }
 
-    public void setReservationStart(@Future Date reservationStart) {
+    public void setReservationStart(@Future LocalDateTime reservationStart) {
         this.reservationStart = reservationStart;
     }
 
-    public @Future Date getReservationEnd() {
+    public @Future LocalDateTime getReservationEnd() {
         return reservationEnd;
     }
 
-    public void setReservationEnd(@Future Date reservationEnd) {
+    public void setReservationEnd(@Future LocalDateTime reservationEnd) {
         this.reservationEnd = reservationEnd;
     }
 }

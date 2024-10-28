@@ -1,0 +1,41 @@
+### Health Check
+GET http://localhost:8080/api/places/types/health
+Accept: text/plain
+
+### Get PlaceType List
+GET http://localhost:8080/api/places/types/
+Accept: application/json
+
+### Get PlaceType by ID
+GET http://localhost:8080/api/places/types/1
+Accept: application/json
+
+### Create PlaceType
+POST http://localhost:8080/api/places/types/
+Content-Type: application/json
+
+{
+  "title": "Restaurant",
+  "description": "A place where people pay to sit and eat meals that are cooked and served on the premises."
+}
+
+### Replace PlaceType
+PUT http://localhost:8080/api/places/types/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Café",
+  "description": "A small restaurant selling light meals and drinks."
+}
+
+### Update PlaceType
+PATCH http://localhost:8080/api/places/types/1
+Content-Type: application/json
+
+{
+  "description": "A place offering coffee and snacks."
+}
+
+### Delete PlaceType
+DELETE http://localhost:8080/api/places/types/1

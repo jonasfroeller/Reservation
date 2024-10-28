@@ -1,0 +1,41 @@
+### Health Check
+GET http://localhost:8080/api/places/health
+Accept: text/plain
+
+### Get Place List
+GET http://localhost:8080/api/places/
+Accept: application/json
+
+### Get Place by ID
+GET http://localhost:8080/api/places/1
+Accept: application/json
+
+### Create Place
+POST http://localhost:8080/api/places/
+Content-Type: application/json
+
+{
+  "placeTypeId": 1,
+  "location": "123 Main St, Springfield"
+}
+
+### Replace Place
+PUT http://localhost:8080/api/places/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "placeTypeId": 1,
+  "location": "456 Elm St, Springfield"
+}
+
+### Update Place
+PATCH http://localhost:8080/api/places/1
+Content-Type: application/json
+
+{
+  "location": "789 Oak St, Springfield"
+}
+
+### Delete Place
+DELETE http://localhost:8080/api/places/1

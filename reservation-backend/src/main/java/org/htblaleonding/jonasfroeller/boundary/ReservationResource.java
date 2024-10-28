@@ -24,20 +24,20 @@ public class ReservationResource {
     UriInfo uriInfo;
 
     @GET
-    @Path("/health")
+    @Path("health")
     @Produces(MediaType.TEXT_PLAIN)
     public Response healthCheck() {
         return Response.ok(String.format("%s is alive!", ReservationResource.class.getSimpleName())).build();
     }
 
     @GET
-    @Path("/")
+    @Path("")
     public List<Reservation> getReservationList() {
         return reservationRepository.findAll().list();
     }
 
     @GET
-    @Path("/{id}")
+    @Path("{id}")
     public Reservation getReservationById(@PathParam("id") Long id) {
         return reservationRepository.findById(id);
     }
@@ -63,14 +63,38 @@ public class ReservationResource {
     }
 
     @PATCH
+    @Path("{id}")
     @Transactional
-    public Response updateReservation(Reservation reservation) {
-        reservationRepository.update(reservation);
-        return Response.ok().entity(reservation).build();
+    public Response updateReservation(@PathParam("id") Long id, Reservation updatedReservation) {
+        Reservation existingReservation = reservationRepository.findById(id);
+
+        if (existingReservation == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Reservation not found").build();
+        }
+
+        if (updatedReservation.getCustomer() != null) {
+            existingReservation.setCustomer(updatedReservation.getCustomer());
+        }
+
+        if (updatedReservation.getPlace() != null) {
+            existingReservation.setPlace(updatedReservation.getPlace());
+        }
+
+        if (updatedReservation.getReservationStart() != null) {
+            existingReservation.setReservationStart(updatedReservation.getReservationStart());
+        }
+
+        if (updatedReservation.getReservationEnd() != null) {
+            existingReservation.setReservationEnd(updatedReservation.getReservationEnd());
+        }
+
+        reservationRepository.update(existingReservation);
+
+        return Response.ok().entity(existingReservation).build();
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("{id}")
     @Transactional
     public Response deleteReservation(@PathParam("id") Long id) {
         reservationRepository.deleteById(id);

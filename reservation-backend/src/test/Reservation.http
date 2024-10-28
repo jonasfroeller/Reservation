@@ -1,0 +1,46 @@
+### Health Check
+GET http://localhost:8080/api/reservations/health
+Accept: text/plain
+
+### Get Reservation List
+GET http://localhost:8080/api/reservations/
+Accept: application/json
+
+### Get Reservation by ID
+GET http://localhost:8080/api/reservations/1
+Accept: application/json
+
+### Create Reservation
+POST http://localhost:8080/api/reservations/
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "placeId": 1,
+  "reservationStart": "2025-10-10T10:00:00",
+  "reservationEnd": "2025-10-10T10:30:00"
+}
+
+### Replace Reservation
+PUT http://localhost:8080/api/reservations/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "customerId": 1,
+  "placeId": 1,
+  "reservationStart": "2025-10-10T11:00:00",
+  "reservationEnd": "2025-10-10T11:30:00"
+}
+
+### Update Reservation
+PATCH http://localhost:8080/api/reservations/1
+Content-Type: application/json
+
+{
+  "reservationStart": "2025-10-10T12:00:00",
+  "reservationEnd": "2025-10-10T12:30:00"
+}
+
+### Delete Reservation
+DELETE http://localhost:8080/api/reservations/1

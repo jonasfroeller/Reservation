@@ -1,0 +1,49 @@
+### Health Check
+GET http://localhost:8080/api/customers/health
+Accept: text/plain
+
+### Get Customer List
+GET http://localhost:8080/api/customers/
+Accept: application/json
+
+### Get Customer by ID
+GET http://localhost:8080/api/customers/1
+Accept: application/json
+
+### Create Customer
+POST http://localhost:8080/api/customers/
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "password": "98b#YpU#M#nsxUJVN$%r2Wp6i6CYErlihcTc2^8e@EyzMd7sDo34RLloqVqm",
+  "username": "johndoe"
+}
+
+### Replace Customer
+PUT http://localhost:8080/api/customers/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane.doe@example.com",
+  "password": "2KwQMlqS5Llp$Cq&yd%Ct$djP*aYL5Rgjzjs4%N^Zwt44RfgbLyYwTfuU^FBHvvvuhP5b@*C68obR%3sGhub*#$^p5^%Q4SVrijPukv8kJNih5Tby6Ty^5hSobrHj8ll",
+  "username": "janedoe"
+}
+
+### Update Customer
+PATCH http://localhost:8080/api/customers/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "Jane",
+  "lastName": "Smith"
+}
+
+### Delete Customer
+DELETE http://localhost:8080/api/customers/1

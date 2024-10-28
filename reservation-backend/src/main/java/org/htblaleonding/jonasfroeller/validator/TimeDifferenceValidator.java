@@ -13,7 +13,8 @@ public class TimeDifferenceValidator implements ConstraintValidator<TimeDifferen
         if (reservation.getReservationStart() == null || reservation.getReservationEnd() == null) {
             return true;
         }
-        Duration duration = Duration.between(reservation.getReservationStart().toInstant(), reservation.getReservationEnd().toInstant());
+
+        Duration duration = Duration.between(reservation.getReservationStart(), reservation.getReservationEnd());
         return duration.toMinutes() == 30;
     }
 }

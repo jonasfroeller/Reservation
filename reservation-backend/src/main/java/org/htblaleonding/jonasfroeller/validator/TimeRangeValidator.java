@@ -4,7 +4,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.htblaleonding.jonasfroeller.model.Reservation;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class TimeRangeValidator implements ConstraintValidator<TimeRange, Reservation> {
@@ -15,14 +14,9 @@ public class TimeRangeValidator implements ConstraintValidator<TimeRange, Reserv
             return true;
         }
 
-        LocalDateTime startDateTime = reservation.getReservationStart().toLocalDate().atStartOfDay();
-        LocalDateTime endDateTime = reservation.getReservationEnd().toLocalDate().atStartOfDay();
+        LocalTime startTime = reservation.getReservationStart().toLocalTime();
+        LocalTime endTime = reservation.getReservationEnd().toLocalTime();
 
-        LocalTime startTime = startDateTime.toLocalTime();
-        LocalTime endTime = endDateTime.toLocalTime();
-        LocalTime eightAM = LocalTime.of(8, 0);
-        LocalTime eightPM = LocalTime.of(20, 0);
-
-        return !startTime.isBefore(eightAM) && !endTime.isAfter(eightPM);
+        return !startTime.isBefore(LocalTime.of(8, 0)) && !endTime.isAfter(LocalTime.of(20, 0));
     }
 }

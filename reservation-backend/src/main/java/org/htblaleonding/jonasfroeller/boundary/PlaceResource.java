@@ -24,20 +24,20 @@ public class PlaceResource {
     UriInfo uriInfo;
 
     @GET
-    @Path("/health")
+    @Path("health")
     @Produces(MediaType.TEXT_PLAIN)
     public Response healthCheck() {
         return Response.ok(String.format("%s is alive!", PlaceResource.class.getSimpleName())).build();
     }
 
     @GET
-    @Path("/")
+    @Path("")
     public List<Place> getPlaceList() {
         return placeRepository.findAll().list();
     }
 
     @GET
-    @Path("/{id}")
+    @Path("{id}")
     public Place getPlaceById(@PathParam("id") Long id) {
         return placeRepository.findById(id);
     }
@@ -63,14 +63,30 @@ public class PlaceResource {
     }
 
     @PATCH
+    @Path("{id}")
     @Transactional
-    public Response updatePlace(Place place) {
-        placeRepository.update(place);
-        return Response.ok().entity(place).build();
+    public Response updatePlace(@PathParam("id") Long id, Place updatedPlace) {
+        Place existingPlace = placeRepository.findById(id);
+
+        if (existingPlace == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Place not found").build();
+        }
+
+        if (updatedPlace.getPlaceType() != null) {
+            existingPlace.setPlaceType(updatedPlace.getPlaceType());
+        }
+
+        if (updatedPlace.getLocation() != null) {
+            existingPlace.setLocation(updatedPlace.getLocation());
+        }
+
+        placeRepository.update(existingPlace);
+
+        return Response.ok().entity(existingPlace).build();
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("{id}")
     @Transactional
     public Response deletePlace(@PathParam("id") Long id) {
         placeRepository.deleteById(id);
