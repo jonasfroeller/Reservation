@@ -39,8 +39,14 @@ public class PlaceResource {
 
     @GET
     @Path("{id}")
-    public Place getPlaceById(@PathParam("id") Long id) {
-        return placeRepository.findById(id);
+    public Response getPlaceById(@PathParam("id") Long id) {
+        Place place = placeRepository.findById(id);
+
+        if (place == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(place).build();
     }
 
     @POST
@@ -90,6 +96,10 @@ public class PlaceResource {
     @Path("{id}")
     @Transactional
     public Response deletePlace(@PathParam("id") Long id) {
+        if (placeRepository.findById(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
         placeRepository.deleteById(id);
         return Response.noContent().build();
     }

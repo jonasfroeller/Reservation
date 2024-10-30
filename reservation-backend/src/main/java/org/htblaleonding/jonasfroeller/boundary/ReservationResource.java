@@ -39,8 +39,14 @@ public class ReservationResource {
 
     @GET
     @Path("{id}")
-    public Reservation getReservationById(@PathParam("id") Long id) {
-        return reservationRepository.findById(id);
+    public Response getReservationById(@PathParam("id") Long id) {
+        Reservation reservation = reservationRepository.findById(id);
+
+        if (reservation == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(reservation).build();
     }
 
     @POST
@@ -98,6 +104,10 @@ public class ReservationResource {
     @Path("{id}")
     @Transactional
     public Response deleteReservation(@PathParam("id") Long id) {
+        if (reservationRepository.findById(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
         reservationRepository.deleteById(id);
         return Response.noContent().build();
     }

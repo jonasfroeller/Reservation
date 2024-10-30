@@ -40,8 +40,14 @@ public class CustomerResource {
 
     @GET
     @Path("{id}")
-    public Customer getCustomerById(@PathParam("id") Long id) {
-        return customerRepository.findById(id);
+    public Response getCustomerById(@PathParam("id") Long id) {
+        Customer customer = customerRepository.findById(id);
+
+        if (customer == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(customer).build();
     }
 
     @POST
@@ -99,6 +105,10 @@ public class CustomerResource {
     @Path("{id}")
     @Transactional
     public Response deleteCustomer(@PathParam("id") Long id) {
+        if (customerRepository.findById(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
         customerRepository.deleteById(id);
         return Response.noContent().build();
     }

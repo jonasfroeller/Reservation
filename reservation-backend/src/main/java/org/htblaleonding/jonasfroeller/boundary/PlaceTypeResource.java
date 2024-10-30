@@ -39,8 +39,14 @@ public class PlaceTypeResource {
 
     @GET
     @Path("{id}")
-    public PlaceType getPlaceTypeById(@PathParam("id") Long id) {
-        return placeTypeRepository.findById(id);
+    public Response getPlaceTypeById(@PathParam("id") Long id) {
+        PlaceType placeType = placeTypeRepository.findById(id);
+
+        if (placeType == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(placeType).build();
     }
 
     @POST
@@ -90,6 +96,10 @@ public class PlaceTypeResource {
     @Path("{id}")
     @Transactional
     public Response deletePlaceType(@PathParam("id") Long id) {
+        if (placeTypeRepository.findById(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
         placeTypeRepository.deleteById(id);
         return Response.noContent().build();
     }
