@@ -8,13 +8,17 @@ import jakarta.validation.constraints.Size;
 import org.htblaleonding.jonasfroeller.utility.PasswordUtils;
 import org.htblaleonding.jonasfroeller.validator.Password;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Customer extends PanacheEntity {
     @Size(min = 1)
     @Column(name = "first_name")
+    @JsonProperty("first_name")
     private String firstName;
     @Size(min = 1)
     @Column(name = "last_name")
+    @JsonProperty("last_name")
     private String lastName;
     @Email
     private String email;

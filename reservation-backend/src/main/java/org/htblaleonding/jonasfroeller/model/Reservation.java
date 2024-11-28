@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Future;
 import org.htblaleonding.jonasfroeller.validator.TimeDifference;
 import org.htblaleonding.jonasfroeller.validator.TimeRange;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,9 +23,11 @@ public class Reservation extends PanacheEntity {
 
     @Future
     @Column(name = "reservation_start")
+    @JsonProperty("reservation_start")
     private LocalDateTime reservationStart;
     @Future
     @Column(name = "reservation_end")
+    @JsonProperty("reservation_end")
     private LocalDateTime reservationEnd;
 
     public Customer getCustomer() {
