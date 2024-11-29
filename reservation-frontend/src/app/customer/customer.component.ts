@@ -9,18 +9,17 @@ import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrl: './customer.component.css',
-  standalone: true,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule
-  ]
+    selector: 'app-customer',
+    templateUrl: './customer.component.html',
+    styleUrl: './customer.component.css',
+    imports: [
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule
+    ]
 })
 
 /**

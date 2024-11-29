@@ -9,19 +9,18 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ReservationService } from '../reservation.service';
 
 @Component({
-  selector: 'app-reservation',
-  standalone: true,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css'
+    selector: 'app-reservation',
+    imports: [
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './reservation.component.html',
+    styleUrl: './reservation.component.css'
 })
 export class ReservationComponent {
   private fb = inject(FormBuilder);
