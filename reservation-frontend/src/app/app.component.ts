@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
-import {CustomerComponent} from './customer/customer.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, MenuComponent, CustomerComponent],
+    standalone: true,
+    imports: [MenuComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

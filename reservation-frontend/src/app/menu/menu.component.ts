@@ -13,21 +13,21 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {routes} from '../app.routes';
 
 @Component({
-    selector: 'app-menu',
-    templateUrl: './menu.component.html',
-    styleUrl: './menu.component.css',
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        AsyncPipe,
-        CustomerComponent,
-        RouterOutlet,
-        RouterLinkActive,
-        RouterLink,
-    ]
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrl: './menu.component.css',
+  standalone: true,
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    AsyncPipe,
+    RouterOutlet,
+    RouterLinkActive,
+    RouterLink,
+  ]
 })
 export class MenuComponent {
   private breakpointObserver = inject(BreakpointObserver);

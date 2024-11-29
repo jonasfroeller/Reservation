@@ -8,10 +8,11 @@ import { Reservation } from '../model/Reservation';
 import { DatePipe } from '@angular/common';
 
 @Component({
-    selector: 'app-reservations',
-    templateUrl: './reservations.component.html',
-    styleUrl: './reservations.component.css',
-    imports: [MatTableModule, MatPaginatorModule, MatSortModule, DatePipe]
+  selector: 'app-reservations',
+  templateUrl: './reservations.component.html',
+  styleUrl: './reservations.component.css',
+  standalone: true,
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, DatePipe]
 })
 export class ReservationsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
