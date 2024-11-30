@@ -1,23 +1,25 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Customer Information</mat-card-title>
+      <mat-card-title>Kundeninformation</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="First name" formControlName="first_name">
+            <mat-label>Vorname</mat-label>
+            <input matInput formControlName="first_name">
             @if (addressForm.controls['first_name'].hasError('required')) {
-              <mat-error>First name is <strong>required</strong></mat-error>
+              <mat-error>Vorname ist <strong>erforderlich</strong></mat-error>
             }
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" formControlName="last_name">
+            <mat-label>Nachname</mat-label>
+            <input matInput formControlName="last_name">
             @if (addressForm.controls['last_name'].hasError('required')) {
-              <mat-error>Last name is <strong>required</strong></mat-error>
+              <mat-error>Nachname ist <strong>erforderlich</strong></mat-error>
             }
           </mat-form-field>
         </div>
@@ -25,32 +27,35 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Username" formControlName="username">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
             @if (addressForm.controls['username'].hasError('required')) {
-              <mat-error>Username is <strong>required</strong></mat-error>
+              <mat-error>Username ist <strong>erforderlich</strong></mat-error>
             }
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="E-Mail" formControlName="email">
+            <mat-label>E-Mail</mat-label>
+            <input matInput formControlName="email">
             @if (addressForm.controls['email'].hasError('required')) {
-              <mat-error>E-Mail is <strong>required</strong></mat-error>
+              <mat-error>E-Mail ist <strong>erforderlich</strong></mat-error>
             }
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Password" formControlName="password">
+            <mat-label>Passwort</mat-label>
+            <input matInput formControlName="password">
             @if (addressForm.controls['password'].hasError('required')) {
-              <mat-error>Password is <strong>required</strong></mat-error>
+              <mat-error>Passwort ist <strong>erforderlich</strong></mat-error>
             }
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="primary" type="submit">Aktualisieren</button>
     </mat-card-actions>
   </mat-card>
 </form>

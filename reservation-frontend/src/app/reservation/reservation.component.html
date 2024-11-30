@@ -7,7 +7,8 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="number" placeholder="Kunden ID" formControlName="customer_id">
+            <mat-label>Kunden ID</mat-label>
+            <input matInput type="number" formControlName="customer_id">
             @if (reservationForm.controls['customer_id'].hasError('required')) {
               <mat-error>Kunden ID ist <strong>erforderlich</strong></mat-error>
             }
@@ -15,7 +16,8 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="number" placeholder="Platz ID" formControlName="place_id">
+            <mat-label>Platz ID</mat-label>
+            <input matInput type="number" formControlName="place_id">
             @if (reservationForm.controls['place_id'].hasError('required')) {
               <mat-error>Platz ID ist <strong>erforderlich</strong></mat-error>
             }
@@ -24,24 +26,56 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput [matDatepicker]="startPicker" placeholder="Startdatum" formControlName="reservation_start">
-            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
-            <mat-datepicker #startPicker></mat-datepicker>
-            @if (reservationForm.controls['reservation_start'].hasError('required')) {
-              <mat-error>Startdatum ist <strong>erforderlich</strong></mat-error>
-            }
-          </mat-form-field>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Startdatum</mat-label>
+                <input matInput [matDatepicker]="startDatePicker" formControlName="reservation_start_date">
+                <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+                @if (reservationForm.controls['reservation_start_date'].hasError('required')) {
+                  <mat-error>Startdatum ist <strong>erforderlich</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Startzeit</mat-label>
+                <input matInput [matTimepicker]="startTimePicker" formControlName="reservation_start_time">
+                <mat-timepicker-toggle matIconSuffix [for]="startTimePicker"/>
+                <mat-timepicker [options]="reservationStartTimeOptions" #startTimePicker/>
+                @if (reservationForm.controls['reservation_start_time'].hasError('required')) {
+                  <mat-error>Startzeit ist <strong>erforderlich</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput [matDatepicker]="endPicker" placeholder="Enddatum" formControlName="reservation_end">
-            <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
-            <mat-datepicker #endPicker></mat-datepicker>
-            @if (reservationForm.controls['reservation_end'].hasError('required')) {
-              <mat-error>Enddatum ist <strong>erforderlich</strong></mat-error>
-            }
-          </mat-form-field>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Enddatum</mat-label>
+                <input matInput [matDatepicker]="endDatePicker" formControlName="reservation_end_date">
+                <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+                @if (reservationForm.controls['reservation_end_date'].hasError('required')) {
+                  <mat-error>Enddatum ist <strong>erforderlich</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-label>Endzeit</mat-label>
+                <input matInput [matTimepicker]="endTimePicker" formControlName="reservation_end_time">
+                <mat-timepicker-toggle matIconSuffix [for]="endTimePicker"/>
+                <mat-timepicker [options]="reservationEndTimeOptions" #endTimePicker/>
+                @if (reservationForm.controls['reservation_end_time'].hasError('required')) {
+                  <mat-error>Endzeit ist <strong>erforderlich</strong></mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
         </div>
       </div>
     </mat-card-content>
@@ -50,4 +84,3 @@
     </mat-card-actions>
   </mat-card>
 </form>
-
