@@ -62,6 +62,8 @@ export class ReservationComponent {
 
   onSubmit(): void {
     if (this.reservationForm.valid) {
+      // TODO: reduce code complexity by using "Timepicker integration with datepicker"
+      // see https://material.angular.io/components/timepicker/examples#timepicker-datepicker-integration
       const reservation_start_date = new Date(this.reservationForm.value.reservation_start_date as unknown as string);
       const reservation_start_time = new Date(this.reservationForm.value.reservation_start_time as unknown as string);
       const reservation_end_date = new Date(this.reservationForm.value.reservation_end_date as unknown as string);
