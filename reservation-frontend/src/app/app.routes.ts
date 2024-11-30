@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import {ReservationsComponent} from './reservations/reservations.component';
-import {CustomerComponent} from './customer/customer.component';
-import {ReservationComponent} from './reservation/reservation.component';
+import {ReservationsComponent} from './components/reservations/reservations.component';
+import {CustomerComponent} from './components/customer/customer.component';
+import {ReservationComponent} from './components/reservation/reservation.component';
 
 export const routes: Routes = [
   {

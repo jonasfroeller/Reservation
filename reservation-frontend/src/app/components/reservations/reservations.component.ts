@@ -3,8 +3,8 @@ import { MatTableModule, MatTable } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { ReservationsDataSource } from './reservations-datasource';
-import { ReservationsService } from '../reservations.service';
-import { Reservation } from '../model/Reservation';
+import { ReservationsService } from '../../services/reservations.service';
+import { Reservation } from '../../model/Reservation';
 import { DatePipe } from '@angular/common';
 
 @Component({

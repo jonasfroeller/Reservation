@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/core';
-import { ReservationService } from '../reservation.service';
+import { ReservationService } from '../../services/reservation.service';
 import {Component} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';

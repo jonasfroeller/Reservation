@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, merge, BehaviorSubject } from 'rxjs';
-import { Reservation } from '../model/Reservation';
+import { Reservation } from '../../model/Reservation';
 
 export class ReservationsDataSource extends DataSource<Reservation> {
   data = new BehaviorSubject<Reservation[]>([]);
