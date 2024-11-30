@@ -26,8 +26,11 @@ jobs:
       - name: Make mvnw executable
         run: chmod +x mvnw
 
-      - name: Build
-        run: ./mvnw package -B
+      - name: Clean and Package
+        run: ./mvnw clean package -DskipTests -B
+
+      - name: Run Unit Tests
+        run: ./mvnw test -B
 
       - name: Run Integration Tests
-        run: ./mvnw verify -B
+        run: ./mvnw failsafe:integration-test failsafe:verify -B
