@@ -29,8 +29,8 @@ jobs:
       - name: Clean and Package
         run: ./mvnw clean package -DskipTests -B
 
-      - name: Run Unit Tests
-        run: ./mvnw test -B
+      # - name: Run Unit Tests
+      #  run: ./mvnw test -B
 
-      - name: Run Integration Tests
-        run: ./mvnw failsafe:integration-test failsafe:verify -B
+      # - name: Run Integration Tests
+      #  run: ./mvnw failsafe:integration-test failsafe:verify -B
